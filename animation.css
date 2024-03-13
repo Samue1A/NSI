@@ -1,0 +1,65 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f0f0f0;
+  }
+  
+  #battlefield {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    background: url('background.jpg') no-repeat center center;
+    background-size: cover;
+  }
+  
+  .combatant {
+    position: absolute;
+  }
+  
+  #cat {
+    animation: catFight 10s forwards;
+  }
+  
+  @keyframes catFight {
+    0%, 10% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(100px) rotate(360deg); /* Cat backflip */
+    }
+    100% {
+      transform: translateX(200px);
+    }
+  }
+  
+  #fencer {
+    animation: fencerFight 10s forwards;
+  }
+  
+  @keyframes fencerFight {
+    0%, 10% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-200px);
+      opacity: 0; /* Fencer disappears */
+    }
+  }
+  
+  .arm, .sword {
+    position: absolute;
+    animation: swing 2s infinite;
+  }
+  
+  @keyframes swing {
+    0%, 100% {
+      transform: rotate(0);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+  }
+  

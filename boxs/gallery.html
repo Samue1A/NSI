@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo Gallery</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="gallery.css"> <!-- Ensure you have the updated CSS -->
+</head>
+<body>
+
+<div id="photoGallery">
+  <!-- Main photo and caption will be inserted here by JavaScript -->
+</div>
+
+<div class="navigation">
+  <button id="prevButton">← Previous</button>
+  <button id="nextButton">Next →</button>
+</div>
+
+<div id="thumbnails">
+  <!-- Thumbnails will be inserted here by JavaScript -->
+</div>
+
+<script>
+  const photos = [
+    {url: '../resources/juju/IMG-20240313-WA0032.jpg', caption: 'est absolument adorable'},
+    {url: '../resources/juju/IMG-20240313-WA0033.jpg', caption: 'peut servir de tapis'},
+    {url: '../resources/juju/IMG-20240313-WA0013.jpg', caption: 'peut servir de tapis x2'},
+    {url: '../resources/juju/IMG-20240313-WA0011.jpg', caption: 'peut servir de tapis x3 + veut toujours un calin'},
+    {url: '../resources/juju/IMG-20240313-WA0031.jpg', caption: 'Pourrait etre un burrito'},
+    {url: '../resources/juju/IMG-20240313-WA0026.jpg', caption: 'Pourrait etre un burrito x2'},
+    {url: '../resources/juju/IMG-20240313-WA0008.jpg', caption: 'Pourrait etre un burrito x3'},
+    {url: '../resources/juju/IMG-20240313-WA0029.jpg', caption: 'veut toujours un calin'},
+    {url: '../resources/juju/IMG-20240313-WA0025.jpg', caption: 'Est tres leger'},
+    {url: '../resources/juju/IMG-20240313-WA0028.jpg', caption: 'Protege notre famille'},
+    {url: '../resources/juju/IMG-20240313-WA0016.jpg', caption: 'Protege notre famille'},
+    {url: '../resources/juju/IMG-20240313-WA0012.jpg', caption: 'Protege notre famille'},
+    {url: '../resources/juju/IMG-20240313-WA0015.jpg', caption: 'Protege notre famille'},
+    {url: '../resources/juju/IMG-20240313-WA0024.jpg', caption: 'Protege notre famille'},
+    {url: '../resources/juju/IMG-20240313-WA0027.jpg', caption: 'Protege notre famille'},
+    {url: '../resources/juju/IMG-20240313-WA0010.jpg', caption: 'Protege notre famille'},
+    {url: '../resources/juju/IMG-20240313-WA0005.jpg', caption: 'Est un maitre du camouflage'},
+    {url: '../resources/juju/IMG-20240313-WA0022.jpg', caption: 'Est un maitre du camouflage'},
+    {url: '../resources/juju/IMG-20240313-WA0003.jpg', caption: 'Etait heureux jusqu\'a la fin'},
+    {url: '../resources/juju/IMG-20240313-WA0006.jpg', caption: 'Etait heureux jusqu\'a la fin'},
+    {url: '../resources/juju/WhatsApp Image 2024-03-13 at 22.40.31_3b26f7c3.jpg', caption: ''},
+    {url: '../resources/juju/WhatsApp Image 2024-03-13 at 22.40.31_1bf948fb.jpg', caption: ''},
+  ];
+
+  let currentIndex = 0;
+
+  function updateGallery() {
+    const photo = photos[currentIndex];
+    document.getElementById('photoGallery').innerHTML = `
+      <img src="${photo.url}" alt="Photo">
+      <div class="photo-caption">${photo.caption}</div>
+    `;
+    updateThumbnails();
+  }
+
+  function updateThumbnails() {
+    const thumbnails = photos.map((photo, index) => `
+      <img class="thumbnail ${index === currentIndex ? 'active' : ''}" src="${photo.url}" alt="Thumbnail" data-index="${index}">
+    `).join('');
+
+    document.getElementById('thumbnails').innerHTML = thumbnails;
+  }
+
+  document.getElementById('nextButton').addEventListener('click', function() {
+    currentIndex = (currentIndex + 1) % photos.length;
+    updateGallery();
+  });
+
+  document.getElementById('prevButton').addEventListener('click', function() {
+    currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+    updateGallery();
+  });
+
+  document.getElementById('thumbnails').addEventListener('click', function(event) {
+    if (event.target.tagName === 'IMG') {
+      currentIndex = parseInt(event.target.getAttribute('data-index'), 10);
+      updateGallery();
+    }
+  });
+
+  updateGallery();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+.back {
+    background-image: url(../resources/study_mobile.jpg);
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+}
+
+.top {
+    font-weight: bold;
+    font-size: 150%;
+    padding: 1rem;
+}
+
+.all {
+    margin: 0.5rem;
+}
+
+
+.protect > li {
+    font-size:150%;
+    margin-bottom: 0.5rem;
+}
+
+.white {
+    color: white;
+}
+
+@media screen and (min-width: 1024px) {
+    .back {
+        background-image: url(../resources/studying_page.jpg);
+        background-position: center;
+        background-size: cover;
+    }
+    .white {
+        color: black;
+    }
+}
+

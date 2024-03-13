@@ -1,0 +1,23 @@
+@keyframes walkToPodium {
+  0% { bottom: -10%; opacity: 0; }
+  100% { bottom: 50%; opacity: 1; }
+}
+
+.cat {
+  position: absolute;
+  animation: walkToPodium 3s ease forwards;
+}
+
+
+@keyframes dropMedal {
+  0% { top: -10%; opacity: 0; }
+  100% { top: 50%; opacity: 1; }
+}
+
+.medal {
+  position: absolute;
+  animation: dropMedal 3s ease forwards 3s; /* starts after the cats have walked in */
+}
+
+
+
